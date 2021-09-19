@@ -1,0 +1,20 @@
+{
+  "name": "fcc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "tsc-watch",
+    "test": "jest --verbose --watch ./dist",
+    "test:create": "node create-test.js"
+  },
+  "keywords": [],
+  "author": "Vladimir Lazić <contact@vlazic.com> (https://vlazic.com/)",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "27.0.1",
+    "jest": "27.2.0",
+    "tsc-watch": "4.5.0",
+    "typescript": "4.4.3"
+  }
+}
