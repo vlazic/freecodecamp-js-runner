@@ -21,22 +21,33 @@ while ((m = regex.exec(to_test)) !== null) {
   tests.push({ parameters, return_value });
 }
 
-function testLine({ parameters, return_value }) {
-  if (return_value === "a number") {
-    return `expect(typeof func(${parameters})).toStrictEqual('number');`;
+function testDefinition({ parameters, return_value }, index) {
+  let line;
+  switch (return_value) {
+    case "a number":
+      line = `expect(typeof func(${parameters})).toStrictEqual('number');`;
+      break;
+
+    case "a string":
+      line = `expect(typeof func(${parameters})).toStrictEqual('number');`;
+      break;
+
+    default:
+      line = `expect(func(${parameters})).toStrictEqual(${return_value});`;
   }
-  if (return_value === "a string") {
-    return `expect(typeof func(${parameters})).toStrictEqual('string');`;
-  }
-  return `expect(func(${parameters})).toStrictEqual(${return_value});`;
+
+  return `
+test('TEST #${
+    index + 1
+  } | PARAMETERS ${parameters} | RETURN ${return_value}', () => {
+  ${line};
+});`;
 }
 
 const test_base = `
 import func from './index';
 
-test('Run tests', () => {
-  ${tests.map(testLine).join("\n  ")}
-});
+${tests.map(testDefinition).join("\n  ")}
 `;
 
 console.log(test_base);
