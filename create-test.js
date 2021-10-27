@@ -6,7 +6,7 @@ const path = require("path");
 // read file to_test.txt synchronously
 const to_test = fs.readFileSync(path.join(__dirname, "to_test.txt"), "utf8");
 const regex =
-  /^.*?\((?<parameters>.*?)\) should return (?<return_value>.*?)\.$/gm;
+  /^.*?\((?<parameters>.*?)\) should return (?<return_value>.*?)\.?$/gm;
 let m;
 const tests = [];
 
