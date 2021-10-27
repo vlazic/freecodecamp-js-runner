@@ -29,7 +29,11 @@ function testDefinition({ parameters, return_value }, index) {
       break;
 
     case "a string":
-      line = `expect(typeof func(${parameters})).toStrictEqual('number');`;
+      line = `expect(typeof func(${parameters})).toStrictEqual('string');`;
+      break;
+
+    case "a boolean":
+      line = `expect(typeof func(${parameters})).toStrictEqual('boolean');`;
       break;
 
     default:
